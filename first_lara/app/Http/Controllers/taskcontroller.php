@@ -126,6 +126,8 @@ class taskcontroller extends Controller
         }
     }
 
+
+
     function updatetask(Request $request)
     {
         $request->validate([

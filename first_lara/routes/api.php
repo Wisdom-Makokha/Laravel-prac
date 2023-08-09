@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\blogcontroller;
 use App\Http\Controllers\taskcontroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +46,25 @@ Route::put($myroutes[4], [taskcontroller::class, 'updatetask']);
 
 //delete a task
 Route::delete($myroutes[5], [taskcontroller::class, 'deletetask']);
+
+
+/***
+ * 
+ * routes from here for blog
+ * 
+ */
+
+ //create blog route
+Route::post('/createBlog', [blogcontroller::class, 'createblog']);
+
+//read all blogs route
+Route::get('/readAllBlogs', [blogcontroller::class, 'readallblogs']);
+
+//read one blog route
+Route::get('/readABlog', [blogcontroller::class, 'readablog']);
+
+//update a blog route
+Route::put('/updateBlog', [blogcontroller::class, 'updateblog']);
+
+//delete a blog route
+Route::delete('/deleteBlog', [blogcontroller::class, 'deleteblog']);
