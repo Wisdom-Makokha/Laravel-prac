@@ -31,17 +31,11 @@ class taskcontroller extends Controller
         $task = Task::find($task->id);
         //operation success the response is the  db message + added task
         if ($task) {
-            return response([
-                'message' => 'success',
-                'task' => $task
-            ]);
+            return response()->json($task);
         }
         //operation failure is the db access message + a task message
         else {
-            return response([
-                'message' => 'success',
-                'task' => 'not created'
-            ]);
+            return response("Task not created");
         }
     }
 
@@ -69,17 +63,11 @@ class taskcontroller extends Controller
         $task = Task::find($task->id);
         if ($task) {
             //response contains the db access message + the added task
-            return response([
-                'message' => 'success',
-                'task' => $task,
-            ]);
+            return response()->json($task);
         }
         //response is the db access message + task creation failure message
         else {
-            return response([
-                'message' => 'success',
-                'task' => 'task not added',
-            ]);
+            return response("Task not created");
         }
     }
 
@@ -92,16 +80,10 @@ class taskcontroller extends Controller
         //check to see if there is something retrieved and returning the response
         if ($tasks) {
             //response is a db access message + all the tasks in the db
-            return response([
-                'message' => 'success',
-                'tasks' => $tasks
-            ]);
+            return response()->json($tasks);
         } else {
             //response is a db access message + a task message
-            return response([
-                'message' => 'success',
-                'tasks' => 'no tasks available'
-            ]);
+            return response("No tasks found");
         }
     }
 
@@ -114,15 +96,9 @@ class taskcontroller extends Controller
         $task = Task::find($request->id);
 
         if ($task) {
-            return response([
-                'message' => 'success',
-                'task' => $task
-            ]);
+            return response()->json($task);
         } else {
-            return response([
-                'message' => 'success',
-                'task' => 'task not found'
-            ]);
+            return response("No such task exists");
         }
     }
 
@@ -140,17 +116,11 @@ class taskcontroller extends Controller
             $task->iscomplete = true;
             $task->save();
 
-            return response([
-                'message' => 'success',
-                'updatedTask' => $task
-            ]);
+            return response()->json($task);
         }
         else
         {
-            return response([
-                'message' => 'success',
-                'clientmessage' => 'task does not exist'
-            ]);
+            return response("No such task exists");
         }
     }
 
@@ -168,16 +138,10 @@ class taskcontroller extends Controller
             //create a separate variable to store the task to delete just to show the user what has been deleted
             $deletedtask = $task;
             $task->delete();
-            return response([
-                'message' => 'success',
-                'deleted task' => $deletedtask
-            ]);
+            return response()->json($deletedtask);
         }
         else {
-            return response([
-                'message' => 'success',
-                'clientMessage' => 'task does not exist'
-            ]);
+            return response("Delete unsuccessful, no such task exists");
         }
     }
 }

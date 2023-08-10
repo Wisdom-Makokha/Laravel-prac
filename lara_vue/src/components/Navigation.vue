@@ -2,10 +2,11 @@
     <div class="navigation">
         <div class="navigation-container">
             <div class="logo">
-                <a class="home route" href="">Home</a>
+                <router-link class="home route" to="/">Home</router-link>
             </div>
             <div class="other-routes">
-                <a class="about route" href="">About</a>
+                <!-- <router-link class="blogs route">Blogs</router-link> -->
+                <router-link class="about route" to="">About</router-link>
             </div>
         </div>
     </div>
@@ -28,15 +29,24 @@
     position: sticky;
 }
 
-.route{
+.route {
     text-decoration: none;
     margin: 20px;
     font-size: 140%;
     color: black;
-    transition: color 1s ease;
+    transition: color 0.5s ease;
 }
 
-.route:hover, .route:focus{
+.route:hover,
+.route:focus {
     color: white;
+}
+
+.home {
+    margin-left: 100px;
+}
+
+.about {
+    margin-right: 80px;
 }
 </style>

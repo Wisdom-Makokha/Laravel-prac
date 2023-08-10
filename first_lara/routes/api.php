@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 $myroutes = [
     '/createTask',
     '/addTask',
-    '/readTask',
+    '/readAllTasks',
     '/readATask',
     'updateTask',
     '/deleteTask'

@@ -38,7 +38,7 @@ class blogcontroller extends Controller
     function readallblogs()
     {
         //get the blogs from the db
-        $blogs = Blog::all();
+        $blogs = Blog::get(['id', 'title', 'blogpost','dateposted']);
 
         //check if there are any blogs
         if ($blogs) {
