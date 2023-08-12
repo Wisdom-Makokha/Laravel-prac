@@ -40,7 +40,7 @@ export default {
                     headers: {
                         "accept": "application/json"
                     },
-                    data: this.fetchthis,
+                    params: this.fetchthis,
                 },
             )
             .then(response => (

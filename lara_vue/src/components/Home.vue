@@ -35,12 +35,14 @@ export default {
   data() {
     return {
       baseUrl: 'http://127.0.0.1:8000/api/readAllBlogs',
-      blogs: null
+      blogs: [],
+      errors: []
     }
   },
   mounted() {
     axios.get(this.baseUrl)
-      .then(response => (this.blogs = response.data));
+      .then(response => (this.blogs = response.data))
+      .catch(error => {this.errors.push(error)});
   }
 }
 
@@ -53,6 +55,7 @@ export default {
 }
 
 #main-layout {
+  min-width: 350px;
   min-height: 800px;
   height: auto;
   width: 95%;
@@ -77,29 +80,32 @@ export default {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 20px;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  z-index: 2;
+  z-index: -1;
 }
 
 .blog-container {
   display: flex;
   flex-direction: column;
   align-items: start;
-  height: 150px;
+  height: fit-content;
   width: 90%;
   margin-bottom: 3px;
-  background-color: null;
+  background-color: rgba(220, 220, 220, 0.2);
   white-space: normal;
   border-bottom: 1px solid black;
   border-radius: 10px;
   transition: all 1s ease-in-out;
+  position: relative;
+  z-index: 1;
 }
 
-.blog-container:hover .blog-container:focus {
-  background-color: rgb(209, 207, 207);
+.blog-container:hover{
+  background-color: rgba(20, 20, 20, 0.5);
 
 }
 
@@ -118,6 +124,12 @@ export default {
 .blog-body {
   padding-left: 20px;
   padding-right: 10px;
-  overflow: hidden;
+  height:fit-content
+}
+
+.blog-main-text{
+  height: 75px;
+  overflow: clip;
+  text-overflow: ellipsis
 }
 </style>

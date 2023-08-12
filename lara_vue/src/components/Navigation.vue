@@ -24,7 +24,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(123, 123, 7);
+    background-color: rgb(2, 82, 71);
     opacity: 0.8;
     position: sticky;
 }

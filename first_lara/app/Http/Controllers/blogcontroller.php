@@ -51,13 +51,18 @@ class blogcontroller extends Controller
     //function to read a blog
     function readablog(Request $request)
     {
+        
         //validate request
         $request->validate([
             'id' => 'required'
         ]);
 
+        $id = $request->input(key: 'id');
+        
         //get the post from the db
-        $post = Blog::find($request->id);
+        $post = Blog::select('id', 'blogpost', 'dateposted')
+        ->where('id', $id)
+        ->get();
 
         //check if the post exists and return a response
         if ($post) {
